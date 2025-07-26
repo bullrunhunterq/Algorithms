@@ -43,6 +43,8 @@ var romanToInt = function(s) {
       let curValue = romanNumMap[s[i]];
       const nextValue = romanNumMap[s[i + 1]];
       const isSpecial = s[i] === 'I' || s[i] === 'X' || s[i] === 'C'
+      // 下面是吧前后两次换算成一次来做了。
+      // 其实进一步理解，如果下一个数大，那么当前数执行减法、否则执行加法。这种好理解一些，不用额外去处理 i
       if (isSpecial && s[i + 1] && curValue < nextValue) {
           curValue = nextValue - curValue;
           i++;
